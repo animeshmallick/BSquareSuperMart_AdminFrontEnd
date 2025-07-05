@@ -5,8 +5,6 @@
 .env.test
 .env.production
 .project
-composer.lock
-composer.phar
 
 # Logs
 logs/
