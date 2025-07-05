@@ -27,8 +27,8 @@ jobs:
           USER: ${{ secrets.EC2_USER }}
         run: |
           ssh $USER@$HOST << 'EOF'
-            cd /var/www/html/BSquareSuperMart_Admin
-            git config --global --add safe.directory /var/www/html/BSquareSuperMart_Admin
+            cd /var/www/html/BSquareSuperMart_AdminFrontEnd
+            git config --global --add safe.directory /var/www/html/BSquareSuperMart_AdminFrontEnd
             sudo git pull origin mainline
             sudo systemctl restart httpd
             sudo systemctl restart mysqld
