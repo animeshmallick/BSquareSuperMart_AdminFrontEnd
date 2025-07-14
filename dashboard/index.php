@@ -101,6 +101,7 @@ if (!$common->is_admin_logged_in($_SESSION['admin_authToken'] ?? null)){
     document.addEventListener('DOMContentLoaded', () => {
         const firstLink = document.querySelector('aside a');
         if (firstLink) firstLink.click();
+        console.log("here");
     });
 </script>
 </body>
