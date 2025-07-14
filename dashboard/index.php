@@ -14,6 +14,7 @@ if (!$common->is_admin_logged_in($_SESSION['admin_authToken'] ?? null)){
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Admin Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="script.js"></script>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <style>
         @keyframes fadeIn {
@@ -89,8 +90,23 @@ if (!$common->is_admin_logged_in($_SESSION['admin_authToken'] ?? null)){
     </aside>
 
     <section class="flex-1 relative bg-white slide-in-up">
-        <iframe name="purchaseFrame" class="absolute inset-0 w-full h-full"></iframe>
+        <!-- Spinner -->
+        <div id="loadingSpinner" class="absolute inset-0 flex items-center justify-center bg-white z-20">
+            <svg class="animate-spin h-10 w-10 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor"
+                      d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z" />
+            </svg>
+        </div>
+
+        <!-- Iframe -->
+        <iframe name="purchaseFrame"
+                class="absolute inset-0 w-full h-full z-10"
+                onload="document.getElementById('loadingSpinner').style.display = 'none';"
+                style="border: none;">
+        </iframe>
     </section>
+
 </main>
 
 <footer class="bg-white text-center py-3 text-sm text-gray-500 border-t slide-in-up">
@@ -101,7 +117,6 @@ if (!$common->is_admin_logged_in($_SESSION['admin_authToken'] ?? null)){
     document.addEventListener('DOMContentLoaded', () => {
         const firstLink = document.querySelector('aside a');
         if (firstLink) firstLink.click();
-        console.log("here");
     });
 </script>
 </body>
